@@ -5,20 +5,20 @@ import 'package:realstateAdmin/core/widgets/Custom_Text.dart';
 import 'package:realstateAdmin/core/widgets/custom_app_bar.dart';
 import 'package:realstateAdmin/features/users/controller/user_controller.dart';
 
-class UsersView extends StatefulWidget {
-  const UsersView({super.key});
+class BrokersView extends StatefulWidget {
+  const BrokersView({super.key});
 
   @override
-  State<UsersView> createState() => _UsersViewState();
+  State<BrokersView> createState() => _UsersViewState();
 }
 
-class _UsersViewState extends State<UsersView> {
+class _UsersViewState extends State<BrokersView> {
 
 UserController controller = Get.put(UserController());
+
   @override
   void initState() {
-  // controller.getAllUsers();
-   controller.getUsers();
+   controller.getBrokers();
     super.initState();
   }
   @override
@@ -26,21 +26,8 @@ UserController controller = Get.put(UserController());
     return GetBuilder<UserController>(
       builder: (_) {
         return Scaffold(
-           appBar: CustomAppBar('', context, false),
+          appBar: CustomAppBar('', context, false),
           body: UsersWidget()
-        
-          // Padding(
-          //   padding:  const EdgeInsets.all(8.0),
-          //   child: ListView(children:  [
-          //
-          //       const Custom_Text(text: 'المستخدمين',
-          //       fontSize: 21,color: Colors.black,
-          //       ),
-          //       const SizedBox(height: 11,),
-          //       UsersWidget()
-          //
-          //   ],),
-          // ),
         );
       }
     );
@@ -48,7 +35,7 @@ UserController controller = Get.put(UserController());
 
   Widget UsersWidget(){
     return ListView.builder(
-      itemCount: controller.userList.length,
+      itemCount: controller.brokerList.length,
       itemBuilder: (context, index) {
       return Padding(
         padding: const EdgeInsets.all(8.0),
@@ -62,17 +49,17 @@ UserController controller = Get.put(UserController());
               height: 100,
               child: Image.asset('assets/images/user.png',)),
 
-              Custom_Text(text: controller.userList[index]['user_name'],
+              Custom_Text(text: controller.brokerList[index]['user_name'],
+              fontSize: 19,color:Colors.black,
+              ),
+
+             const SizedBox(height: 7,),
+
+              Custom_Text(text: controller.brokerList[index]['user_email'],
               fontSize: 19,color:Colors.black,
               ),
 
               const SizedBox(height: 7,),
-
-                Custom_Text(text:
-                controller.userList[index]['user_email'],
-              fontSize: 19,color:Colors.black,
-              ),
-               const SizedBox(height: 7,),
 
                CircleAvatar(
                 radius: 35,
@@ -80,18 +67,13 @@ UserController controller = Get.put(UserController());
                    padding: const EdgeInsets.all(8.0),
                    child: IconButton(onPressed: (){
                    
-                    controller.deleteUser(controller.userList[index]['user_id']);
+                    controller.deleteUser(controller.brokerList[index]['user_id']);
                    
                    }, icon: const Icon(Icons.delete,color: Colors.red,)),
                  ),
                ),
 
                 const SizedBox(height: 7,),
-
-
-
-
-
 
 
               

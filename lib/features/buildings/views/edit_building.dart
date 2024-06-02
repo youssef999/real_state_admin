@@ -1,5 +1,7 @@
 
 
+// ignore_for_file: must_be_immutable
+
  import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:realstateAdmin/core/widgets/Custom_Text.dart';
@@ -30,13 +32,7 @@ class EditBuilding extends StatelessWidget {
           CustomTextFormField(hint: data['name'],
               obs: false, controller: controller.buiildingController),
 
-         const Custom_Text(text: 'اسم الموقع',
-          fontSize: 20,color:Colors.black,
-          ),
-          const SizedBox(height: 10,),
-          CustomTextFormField(hint: data['location_name'],
-              obs: false, controller: controller.locationController),
-
+        
           const Custom_Text(text: 'السعر',
             fontSize: 20,color:Colors.black,
           ),
@@ -55,7 +51,11 @@ class EditBuilding extends StatelessWidget {
 
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: CustomButton(text: 'تعديل', onPressed:(){} ),
+            child: CustomButton(text: 'تعديل', onPressed:(){
+
+              controller.updateBuilding(data);
+
+            } ),
           )
 
 

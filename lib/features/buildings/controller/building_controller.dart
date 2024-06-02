@@ -12,11 +12,8 @@ class BuildingController extends GetxController{
  getAllBuildings () async{
   print("GET ALL BUILDINGS....");
   buildingList=[];
- 
    try{
-
   print(baseUrl.toString()+'/brokers/buildings/get_buildings.php');
-
      var request = await
      http.get(Uri.parse
        (baseUrl+'/brokers/buildings/get_buildings.php'),
@@ -35,13 +32,10 @@ class BuildingController extends GetxController{
        print("DONE BOOKINGS DATA..........");
        buildingList=responseBody['data'];
      }
-     print("userbooking====="+buildingList.toString());
+     print("buildingsxxxx====="+buildingList.toString());
    }catch(e){
      print("ERROR====="+e.toString());
    }
   update();
-
 }
-
-
 }

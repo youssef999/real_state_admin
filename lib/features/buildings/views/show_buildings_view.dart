@@ -41,6 +41,16 @@ class _ShowBuildingsViewState extends State<ShowBuildingsView> {
               //  shrinkWrap: true,
                 itemCount: controller.buildingList.length,
                 itemBuilder: (context,index){
+
+                  print("new==="+controller.buildingList.toString());
+                   print("new22==="+controller.buildingList[index]['image'].toString());
+
+
+                  String image=controller.buildingList[index]['image'].toString()
+                  .replaceAll('[', '').replaceAll(']', '');
+
+                  List imageList=image.split(',');
+
                   return Card(
                     color: Colors.white,
                     child:Padding(
@@ -48,14 +58,14 @@ class _ShowBuildingsViewState extends State<ShowBuildingsView> {
                       child: Column(children: [
                         SizedBox(
                             width:MediaQuery.of(context).size.width*0.8,
-                            child: Image.network(controller.buildingList[index]['images'],
+                            child: Image.network(
+                              imageList[0],
+                              //controller.buildingList[index]['image'],
                               fit:BoxFit.fill,
                             )),
                         Custom_Text(text: controller.buildingList[index]['name'],
                           fontSize: 19,color:Colors.blue,
-                        ),  Custom_Text(text: controller.buildingList[index]['location_name'],
-                          fontSize: 19,color:Colors.black,
-                        ),
+                        ), 
                         Custom_Text(text: "السعر = "+controller.buildingList[index]['price'].toString()
                             +" " +currency,
                           fontSize: 16,color:Colors.blue,
@@ -66,12 +76,12 @@ class _ShowBuildingsViewState extends State<ShowBuildingsView> {
                         ['user_email'].toString(),
                           fontSize: 16,color:Colors.black,
                         ),
-                        SizedBox(height: 18,),
+                        const SizedBox(height: 18,),
 
                         Row(
 
                           children: [
-                            SizedBox(width: 60,),
+                            const SizedBox(width: 60,),
                           CustomButton(text: 'تعديل ',
                               onPressed: (){
 
@@ -80,13 +90,13 @@ class _ShowBuildingsViewState extends State<ShowBuildingsView> {
                             ));
 
                               }),
-                            SizedBox(width: 20,),
+                            const SizedBox(width: 20,),
                           CustomButton(text: 'حذف ',
                               onPressed: (){
 
                               })
                         ],),
-                        SizedBox(height: 18,)
+                        const SizedBox(height: 18,)
 
 
 

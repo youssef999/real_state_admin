@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:realstateAdmin/core/widgets/Custom_button.dart';
 import 'package:realstateAdmin/features/buildings/views/show_buildings_view.dart';
+import 'package:realstateAdmin/features/users/views/brokers_view.dart';
 import 'package:realstateAdmin/features/users/views/users_view.dart';
 
 import '../buildings/views/add_buildings_view.dart';
@@ -35,6 +36,7 @@ class AdminView extends StatelessWidget {
             }),
              const SizedBox(height: 20,),
             CustomButton(text: 'جميع السماسرة ', onPressed:(){
+              Get.to(const BrokersView());
             }),
           ],
         ),
