@@ -56,6 +56,11 @@ class _ShowBuildingsViewState extends State<ShowBuildingsView> {
                     child:Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(children: [
+                        // Text(controller.buildingList[index]['id'],
+                        // style:const TextStyle(color:Colors.black,fontSize: 22,
+                        // fontWeight:FontWeight.w800
+                        // ),
+                        // ),
                         SizedBox(
                             width:MediaQuery.of(context).size.width*0.8,
                             child: Image.network(
@@ -93,6 +98,9 @@ class _ShowBuildingsViewState extends State<ShowBuildingsView> {
                             const SizedBox(width: 20,),
                           CustomButton(text: 'حذف ',
                               onPressed: (){
+
+                                controller. showDeleteDialog
+                                (context,controller.buildingList[index]['id'].toString());
 
                               })
                         ],),
